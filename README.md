@@ -90,19 +90,41 @@ Note that name of node corresponds to the name of the node shown when you run ju
 10) To finally access the Jupyter Notebook, visit this site: http://127.0.0.1:8989/ (you might have to copy and paste after token=)<br />
 <br />
 11) To use Lumerical FDTD and its python API, use must cd to the following directory: /sopt/Lumerical/
-<br />
-# Installing MEEP on Greenplanet:<br />
+
+# Installing MEEP on Greenplanet: <br />
 1) conda activate my_environment <br />
-2) conda install -c conda-forge pymeep pymeep-extras <br />
+2) conda install -c conda-forge pymeep pymeep-extras 
+
+# Using Alternate Conda Solver:<br />
 <br />
+Using conda can be quite slow, so faster implementations of conda such as mamba will make installations much faster. To do this within conda, do the following:
+<br />
+1) conda install -n base conda-libmambda-solver <br />
+2) After installing, simply point to the solver: conda install ... --solver=libmamba
+
+
 # Miscellaneous:<br />
 To activate conda on the cluster type: <br />
-
 To copy/install a conda environment from python, do the following:<br />
 conda activate (your environment)<br />
 conda env export > environment.yml<br />
 conda list --explicit > environment.txt (Try this if above doesn't work)<br />
 conda env create --name envname --file environment.yml <br />
 
-
+# Cisco Anyconnect Errors: <br />
+Click Start and type "cmd". <br />
+ <br />
+- Right click on Command Prompt and run it as administrator. <br />
+- Copy and paste the following line one at a time, pressing enter each time: <br />
+ <br />
+netsh winsock reset - and press Enter. <br />
+netsh int ip reset - and press Enter. <br />
+ipconfig / release - and press Enter. <br />
+ipconfig / renew - and press Enter. <br />
+ipconfig / flushdns - and press Enter <br />
+ <br />
+You can also try to reset your DNS service with the following steps: <br />
+- Press the Windows key + R and type "services.msc" and press OK. <br />
+- Scroll down to find the DNS client. <br />
+- Right click on it and click Restart. <br />
 
